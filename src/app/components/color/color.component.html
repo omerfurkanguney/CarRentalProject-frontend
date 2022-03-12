@@ -1,0 +1,21 @@
+<ul class="list-group">
+  <h5>Renkler</h5>
+  <input
+    type="text"
+    [(ngModel)]="filterText"
+    class="form-control"
+    id="filterText"
+    placeholder="arama ifadesi giriniz"
+  />
+  <select class="form-select" multiple aria-label="multiple select example">
+    <option selected="getAllColorClass" routerLink="/cars">Tüm Renkler</option>
+    <option
+      (click)="setCurrentColor(color)"
+      routerLink="/cars/color/{{ color.colorId }}"
+      *ngFor="let color of colors | colorFilter: filterText"
+      [class]="getCurrentColorClass(color)"
+    >
+      {{ color.colorName }}
+    </option>
+  </select>
+</ul>

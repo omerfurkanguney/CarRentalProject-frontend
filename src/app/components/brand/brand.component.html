@@ -1,0 +1,27 @@
+<ul class="list-group">
+  <h5>Markalar</h5>
+  <input
+    type="text"
+    [(ngModel)]="filterText"
+    class="form-control"
+    id="filterText"
+    placeholder="arama ifadesi giriniz"
+  />
+  <select class="form-select" multiple aria-label="multiple select example">
+    <option selected="getAllBrandClass()" routerLink="/cars">
+      Tüm Markalar
+    </option>
+
+    <option
+      (click)="setCurrentBrand(brand)"
+      routerLink="/cars/brand/{{ brand.brandId }}"
+      *ngFor="let brand of brands | brandFilter: filterText"
+      [class]="getCurrentBrandClass(brand)"
+    >
+      {{ brand.brandName }}
+    </option>
+  </select>
+</ul>
+
+<!--
+<h5 *ngIf="currentBrand">{{ currentBrand.brandName }} seçtiniz</h5> -->
